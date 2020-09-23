@@ -34,10 +34,16 @@ function runFilter() {
     //Select the input element and get the raw HTML node
     var dateElement = d3.select("#datetime");
     var cityElement = d3.select("#city");
+    var stateElement = d3.select("#state");
+    var countryElement = d3.select("#country");
+    var shapeElement = d3.select("#shape");
 
     //Get the value property of the input element
     var dateValue = dateElement.property("value");
     var city = cityElement.property("value"); 
+    var state = stateElement.property("value");
+    var country = countryElement.property("value");
+    var shape = shapeElement.property("value");
 
     //Clear existing data
     tbody.html("");
@@ -50,6 +56,15 @@ function runFilter() {
     }
     if (city !== "") {
         var filteredData = filteredData.filter(sighting => sighting.city === city);
+    }
+    if (state !== "") {
+        var filteredData = filteredData.filter(sighting => sighting.state === state);
+    }
+    if (country !== "") {
+        var filteredData = filteredData.filter(sighting => sighting.country === country);
+    }
+    if (shape !== "") {
+        var filteredData = filteredData.filter(sighting => sighting.shape === shape);
     }
         
     
@@ -65,5 +80,4 @@ function runFilter() {
         });
         
     });
-    console.log(filteredData);
 }
